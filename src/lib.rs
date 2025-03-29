@@ -1,14 +1,7 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+use std::path::Path;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub fn read_to_chars<T : AsRef<Path>>(pathname : T) -> Vec<char> { 
+    let data = std::fs::read_to_string(pathname).expect("Unable To Open File.");
+    data.chars().collect()
 }
