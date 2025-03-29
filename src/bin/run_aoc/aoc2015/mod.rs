@@ -1,9 +1,11 @@
 mod aoc2015_03;
 mod aoc2015_02;
 mod aoc2015_01;
+mod aoc2015_04;
 use aoc2015_01::*;
 use aoc2015_02::*;
 use aoc2015_03::*;
+use aoc2015_04::*;
 
 
 use crate::run_solution;
@@ -20,4 +22,7 @@ pub fn run_2015(){
 
     let mut day03 = Aoc2015_03::new();
     run_solution(&mut day03);
+
+    let mut day04 = Aoc2015_04::new();
+    run_solution(&mut day04);
 }

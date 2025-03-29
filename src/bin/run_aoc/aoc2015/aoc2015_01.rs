@@ -39,8 +39,8 @@ impl crate::Runner for Aoc2015_01 {
     panic!("No answer found")
 }
 
-    fn name(&self) -> String {
-        " 2015 DAY 1 ".to_string()
+    fn name(&self) -> (usize, usize) {
+        (2015 ,1)
     }
 }
 
