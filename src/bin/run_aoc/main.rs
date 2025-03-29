@@ -34,7 +34,7 @@ fn run_solution<T:Runner> (solution : &mut T) {
     let mut p2 =v2.iter();
     let second = p2.next().unwrap();
 
-    println!("Part 2: {second}");
+    println!("Part 2: {second}\n");
     while let Some(line) = p2.next() {
         println!("        {}" , line);
     }
