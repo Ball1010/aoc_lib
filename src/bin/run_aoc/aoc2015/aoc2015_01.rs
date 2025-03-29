@@ -1,19 +1,30 @@
+
 use aoc_lib::read_to_chars;
 
 
-pub fn aoc2015_01(){
-   //*Path from Crate level
-   let ch = read_to_chars("src/inputs/2015_01.txt");
-   //*
-   let answer : i32 =ch.iter().map(|x| match x {
-       '(' => 1 , 
-       ')' => -1,
-       _ => panic!("invalid character"),
-   }).sum();
-   println!("Day 1 pt 1: {answer}");
+pub struct Aoc2015_01 { 
+    ch : Vec<char>, 
 
+}
+ impl  Aoc2015_01 {
+    pub fn new() -> Self { 
+        Self { ch: (read_to_chars("src/inputs/2015_01.txt")) }
+    }
+}
+impl crate::Runner for Aoc2015_01 {
+    fn part1(&mut self) -> Vec<String> {
+        let answer : i32 =self.ch.iter().map(|x| match x {
+            '(' => 1 , 
+            ')' => -1,
+            _ => panic!("invalid character"),
+        }).sum();
+        vec![format!("{answer}")]
+    }
+
+    fn part2(&mut self) -> Vec<String> {
+        
    let mut cur_floor = 1 ;
-   for (pos , c) in ch.iter().enumerate() {
+   for (pos , c) in self.ch.iter().enumerate() {
        let step = match c {
            '(' => 1 ,
            ')' => -1,
@@ -21,8 +32,15 @@ pub fn aoc2015_01(){
        };
        cur_floor += step;
        if cur_floor < 0 {
-           println!("Day 1 pt 2: {pos}");
-           break;
+        return vec![format!("{pos}")];
+           
        }
     }
+    panic!("No answer found")
 }
+
+    fn name(&self) -> String {
+        " 2015 DAY 1 ".to_string()
+    }
+}
+
