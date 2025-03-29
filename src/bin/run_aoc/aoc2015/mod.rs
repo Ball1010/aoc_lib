@@ -1,3 +1,4 @@
+#![allow(unused_imports)]
 mod aoc2015_03;
 mod aoc2015_02;
 mod aoc2015_01;
@@ -23,6 +24,9 @@ pub fn run_2015(){
     let mut day03 = Aoc2015_03::new();
     run_solution(&mut day03);
 
-    let mut day04 = Aoc2015_04::new();
-    run_solution(&mut day04);
+    println!("------ 2015 Day 4 ------\n       -Skipped- \n")
+    //let mut day04 = Aoc2015_04::new();
+    //run_solution(&mut day04);
+
+    
 }
