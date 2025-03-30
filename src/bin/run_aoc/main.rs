@@ -17,13 +17,14 @@ fn main(){
 }
 
 fn run_solution<T:Runner> (solution : &mut T) {
-    let nam = solution.name();
+    let nam: (usize, usize) = solution.name();
     println!("------ {} Day {} -----" ,nam.0 , nam.1);
 
     print_solution(1, &solution.part1());
     print_solution(2, &solution.part2());
     
 }
+
 
 
 fn print_solution(which: usize , output: &[String]) {

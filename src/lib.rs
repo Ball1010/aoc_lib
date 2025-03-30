@@ -21,6 +21,5 @@ where <U as FromStr>::Err: Debug{
 
 
 pub fn read_lines<T: AsRef<Path>> (pathname : T) -> Vec<String> { 
-    let data: String  =std::fs::read_to_string(pathname).expect("Unable to open file").split('\n').collect::<String>();
-    vec![data]
+    std::fs::read_to_string(pathname).expect("Unable to open file").split('\n').map(|s| s.to_string()).collect()
 }
