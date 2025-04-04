@@ -54,40 +54,33 @@ impl Runner for Aoc2015_06 {
 
    fn part1(&mut self) -> Vec<String> {
       let mut grid =[[false ;1000];1000];
-      let mut count =0;
       for c in &self.commands {
         match c {
             Command::Off( p1, p2) =>{
-              for x in p1.x..=p2.x {
-                for y in p1.y..=p2.y{
-                  grid[x][y] =false;
+              for gx in grid.iter_mut().take(p2.x +1).skip(p1.x) {
+                for gy in gx.iter_mut().take(p2.y + 1).skip(p1.y){
+                  *gy =false;
                 }
               }
             }
             Command::On( p1, p2) =>{
-              for x in p1.x..=p2.x {
-                for y in p1.y..=p2.y{
-                  grid[x][y] =true;
+              for gx in grid.iter_mut().take(p2.x +1).skip(p1.x) {
+                for gy in gx.iter_mut().take(p2.y + 1).skip(p1.y){
+                  *gy =true;
                 }
               }
             }
             Command::Toggle( p1, p2) =>{
-              for x in p1.x..=p2.x {
-                for y in p1.y..=p2.y{
-                  grid[x][y] = !grid[x][y];
+              for gx in grid.iter_mut().take(p2.x +1).skip(p1.x) {
+                for gy in gx.iter_mut().take(p2.y + 1).skip(p1.y){
+                  *gy = !*gy;
                 }
               }
             }
         }
       }
-      for i in 0..1000 {
-        for j in 0..1000{
-          if grid[i][j] {
-              count += 1;
-          }
-        }
-      }
-      vec![format!("{}" , count)]
+      let count1 = grid.iter().fold(0u32 , |a , b| a + b.iter().map(|x| *x as u32).sum::<u32>());
+      vec![format!("{}" , count1)]
     }
 
     #[allow(static_mut_refs)]
@@ -97,30 +90,35 @@ impl Runner for Aoc2015_06 {
     for c in &self.commands {
       match c {
           Command::Off( p1, p2) =>{
-            for x in p1.x..=p2.x {
-              for y in p1.y..=p2.y{
-                GRID[x][y] =GRID[x][y].saturating_sub(1) ;
+            for gx in GRID.iter_mut().take(p2.x +1).skip(p1.x) {
+              for gy in gx.iter_mut().take(p2.y + 1).skip(p1.y){
+                *gy = gy.saturating_sub(1);
               }
             }
           }
           Command::On( p1, p2) =>{
-            for x in p1.x..=p2.x {
-              for y in p1.y..=p2.y{
-                GRID[x][y] +=1;
+            for gx in GRID.iter_mut().take(p2.x +1).skip(p1.x) {
+              for gy in gx.iter_mut().take(p2.y + 1).skip(p1.y){
+                *gy += 1;
               }
             }
           }
           Command::Toggle( p1, p2) =>{
-            for x in p1.x..=p2.x {
-              for y in p1.y..=p2.y{
-                GRID[x][y] +=2 ;
+            for gx in GRID.iter_mut().take(p2.x +1).skip(p1.x) {
+              for gy in gx.iter_mut().take(p2.y + 1).skip(p1.y){
+                *gy += 2;
               }
             }
+            }
           }
-      }
-    }
+      
   
+   
+    }
     let count1 = GRID.iter().fold(0u32, |a , b| a + b.iter().sum::<u32>());
+
     vec![format!("{}" , count1)]
-    }}
+  }
 }
+}
+  
