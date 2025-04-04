@@ -1,5 +1,6 @@
 #![allow(clippy::while_let_on_iterator)]
 
+
 mod aoc2015;
 use aoc2015::*;
 
@@ -34,3 +35,4 @@ fn print_solution(which: usize , output: &[String]) {
         println!("       {line}");
     }
 }
+

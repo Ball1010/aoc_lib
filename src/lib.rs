@@ -1,4 +1,6 @@
-use std::{fmt::Debug, path::Path, str::FromStr};
+use std::{fmt::Debug, path::Path, str::FromStr };
+pub mod point;
+
 
 
 pub fn read_to_chars<T : AsRef<Path>>(pathname : T) -> Vec<char> { 
@@ -21,5 +23,7 @@ where <U as FromStr>::Err: Debug{
 
 
 pub fn read_lines<T: AsRef<Path>> (pathname : T) -> Vec<String> { 
-    std::fs::read_to_string(pathname).expect("Unable to open file").split('\n').map(|s| s.to_string()).collect()
+    std::fs::read_to_string(pathname).expect("Unable to open file").split('\n').map(|s| s.to_string()).filter(|x| !x.is_empty()).collect()
 }
+
+
