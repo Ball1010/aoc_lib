@@ -1,6 +1,6 @@
 #![allow(clippy::while_let_on_iterator)]
 
-use std::{time:: {Duration , Instant}, usize};
+use std::time:: {Duration , Instant};
 
 mod aoc2015;
 use aoc2015::*;

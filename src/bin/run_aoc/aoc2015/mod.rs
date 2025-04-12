@@ -5,6 +5,7 @@ mod aoc2015_01;
 mod aoc2015_04;
 mod aoc2015_05;
 mod aoc2015_06;
+mod aoc2015_07;
 
 
 
@@ -14,6 +15,7 @@ use aoc2015_03::*;
 use aoc2015_04::*;
 use aoc2015_05::*;
 use aoc2015_06::*;
+use aoc2015_07::*;
 
 
 use crate::{run_solution, Runner, Selector};
@@ -25,6 +27,7 @@ pub fn run_2015(which : Selector){
     let mut day04 = Aoc2015_04::new();
     let mut day05 = Aoc2015_05::new();
     let mut day06 = Aoc2015_06::new();
+    let mut day07 = Aoc2015_07::new();
 
     let mut days :Vec<&mut dyn Runner> = vec![
         &mut day01,
@@ -33,6 +36,7 @@ pub fn run_2015(which : Selector){
         &mut day04,
         &mut day05,
         &mut day06,
+        &mut day07,
     ];
 
     match which {
