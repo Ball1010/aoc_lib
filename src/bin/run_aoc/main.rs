@@ -8,6 +8,7 @@ use aoc2015::*;
 pub enum Selector {
     All ,
     One(usize),
+    Last
 }
 
 pub trait Runner  {
@@ -19,15 +20,15 @@ pub trait Runner  {
 fn main(){
     //run_2015(Selector::All);
     let args = std::env::args().collect::<Vec<String>>();
-    if args.len() ==1  {
+    if args.len() > 1  {
+        if let Ok(input) =args[1].parse::<usize>(){
+        run_2015(Selector::One(input));
+        } else {
         run_2015(Selector::All);
-    }else if args.len() ==2 {
-        let input =args[1].clone();
-        run_2015(Selector::One(input.parse::<usize>().unwrap()));
-
-    }else {
-        run_2015(Selector::All);
-    }
+        }
+    } else {
+        run_2015(Selector::Last);
+        }
 
 }
 
